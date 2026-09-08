@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bay Eight Studios — Miami's Premier Recording Studio</title>
+  <meta name="description" content="25 years of award-winning recordings. Miami's premier recording studio — built for precision, privacy, and premium sound." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Project styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================================
+       HEADER — logo left, menu right, transparent over the hero
+       ========================================================== -->
+  <header class="site-header" id="mainNav">
+    <div class="container-fluid px-3 px-lg-5">
+      <div class="d-flex align-items-center justify-content-between">
+
+        <a class="brand" href="#top" aria-label="Bay Eight Studios — home">
+          <span class="brand-lines">
+            <span>BAY</span>
+            <span>EIGHT</span>
+            <span>STUDIOS</span>
+          </span>
+          <span class="brand-script">Miami</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#siteMenu"
+                aria-controls="siteMenu" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Slide-in navigation -->
+  <div class="offcanvas offcanvas-end site-menu" tabindex="-1" id="siteMenu" aria-labelledby="siteMenuLabel">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title visually-hidden" id="siteMenuLabel">Menu</h2>
+      <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav>
+        <ul class="site-menu-list">
+          <li><a href="#about">Team</a></li>
+          <li><a href="#studios">Studios</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#clients">Our Clients</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="tel:+13057052405" class="btn btn-accent w-100 mt-4">
+        <i class="bi bi-telephone-fill me-2"></i>305-705-2405
+      </a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ==========================================================
+         SECTION 1 — HERO
+         Background is a video; drop the file at assets/video/hero.mp4
+         (poster frame at assets/img/hero-poster.jpg).
+         ========================================================== -->
+    <section id="hero" class="hero">
+
+      <div class="hero-media">
+        <video class="hero-video" autoplay muted loop playsinline
+               poster="assets/img/hero-poster.jpg">
+          <source src="assets/video/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+
+      <div class="hero-inner container text-center">
+
+        <h1 class="hero-title">Bay Eight Studios</h1>
+
+        <p class="hero-subtitle">
+          <span>Miami's Premier Recording Studio</span>
+          <span class="hero-script">Miami</span>
+        </p>
+
+        <p class="hero-kicker">25 Years of Award-Winning Recordings</p>
+
+        <div class="hero-actions">
+          <a class="pill pill-phone" href="tel:+13057052405">
+            <i class="bi bi-telephone-fill"></i>
+            <span>305-705-2405</span>
+          </a>
+          <a class="pill" href="sms:+13057052405">Text</a>
+          <a class="pill" href="https://wa.me/13057052405" target="_blank" rel="noopener">Whats App</a>
+          <a class="pill" href="mailto:info@bayeight.com">Email</a>
+        </div>
+
+      </div>
+
+      <!-- TRUSTED BY — infinite logo marquee -->
+      <div class="trusted">
+        <p class="trusted-label">Trusted By</p>
+        <div class="marquee" aria-label="Brands that trust Bay Eight Studios">
+          <div class="marquee-track">
+            <!-- The two groups are identical, which is what makes the -50%
+                 loop seamless. Swap each span for <img class="logo-item">
+                 in BOTH groups when the real logo files arrive. -->
+            <div class="marquee-group">
+              <span class="logo-item">Def Jam</span>
+              <span class="logo-item">Aveeno</span>
+              <span class="logo-item">Nike</span>
+              <span class="logo-item">Toronto</span>
+              <span class="logo-item">OVO Sound</span>
+              <span class="logo-item">Puma</span>
+            </div>
+            <div class="marquee-group" aria-hidden="true">
+              <span class="logo-item">Def Jam</span>
+              <span class="logo-item">Aveeno</span>
+              <span class="logo-item">Nike</span>
+              <span class="logo-item">Toronto</span>
+              <span class="logo-item">OVO Sound</span>
+              <span class="logo-item">Puma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 2 — ARTISTS WHO WORK IN OUR STUDIOS
+         Portrait strip; hovering / focusing a portrait swaps the name
+         shown in the centre card. Photos are from bayeight.com.
+         ========================================================== -->
+    <section id="clients" class="artists">
+      <div class="artists-row" id="artistsRow">
+
+        <div class="artists-strip no-scrollbar">
+          <button type="button" class="artist is-active" data-artist="Nas">
+            <span class="artist-photo">
+              <img src="assets/img/artists/nas.jpg" alt="Nas" decoding="async" />
+            </span>
+            <span class="artist-name">Nas</span>
+          </button>
+          <button type="button" class="artist" data-artist="Ed Sheeran">
+            <span class="artist-photo">
+              <img src="assets/img/artists/ed-sheeran.jpg" alt="Ed Sheeran" decoding="async" />
+            </span>
+            <span class="artist-name">Ed Sheeran</span>
+          </button>
+          <button type="button" class="artist" data-artist="J Balvin">
+            <span class="artist-photo">
+              <img src="assets/img/artists/j-balvin.jpg" alt="J Balvin" decoding="async" />
+            </span>
+            <span class="artist-name">J Balvin</span>
+          </button>
+          <button type="button" class="artist" data-artist="Tainy">
+            <span class="artist-photo">
+              <img src="assets/img/artists/tainy.jpg" alt="Tainy" decoding="async" />
+            </span>
+            <span class="artist-name">Tainy</span>
+          </button>
+          <button type="button" class="artist" data-artist="Diplo">
+            <span class="artist-photo">
+              <img src="assets/img/artists/diplo.jpg" alt="Diplo" decoding="async" />
+            </span>
+            <span class="artist-name">Diplo</span>
+          </button>
+          <button type="button" class="artist" data-artist="Swae Lee">
+            <span class="artist-photo">
+              <img src="assets/img/artists/swae-lee.jpg" alt="Swae Lee" decoding="async" />
+            </span>
+            <span class="artist-name">Swae Lee</span>
+          </button>
+        </div>
+
+        <div class="artists-card">
+          <h2 class="artists-title">Artists Who Work In Our Studios</h2>
+          <p class="artists-active">
+            <span class="artists-dot" aria-hidden="true"></span>
+            <span id="activeArtist" aria-live="polite">Nas</span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 3 — WELCOME TO BAY EIGHT
+         The video is a click-to-play facade: the poster loads with the page,
+         the YouTube iframe is only injected once the play button is pressed.
+         ========================================================== -->
+    <section id="about" class="welcome">
+      <div class="welcome-card">
+        <div class="row align-items-center g-4 g-lg-5">
+
+          <div class="col-lg-6">
+            <h2 class="welcome-title">
+              <span class="welcome-dot" aria-hidden="true"></span>Welcome to Bay Eight
+            </h2>
+            <p class="welcome-sub">A Boutique Recording Studio Company</p>
+            <p class="welcome-text">
+              For over two decades, Bay Eight has been where Grammy winners, major
+              labels, and rising stars come to create their records. With two
+              historical studio locations in Miami, we design studios around one
+              belief: the space you record in shapes the music you make.
+            </p>
+            <a href="#contact" class="btn btn-lime">Contact Us</a>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="video-frame" data-video-id="uGhjHFJnfww">
+              <img src="assets/img/welcome-poster.jpg"
+                   alt="The Bay Eight team in the studio with their Billboard and platinum plaques"
+                   decoding="async" loading="lazy" />
+              <button type="button" class="video-play" aria-label="Play the Bay Eight studio video">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M9 7.5v9l7.5-4.5z" fill="currentColor" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 4 — OUR STUDIOS
+         ========================================================== -->
+    <section id="studios" class="studios">
+
+      <div class="container">
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>Our Studios
+        </h2>
+        <p class="welcome-sub">3 World-Class Recording Studios</p>
+      </div>
+
+      <div class="container studios-intro">
+        <div class="row align-items-center g-4">
+
+          <div class="col-lg-4 text-center text-lg-start">
+            <img class="years-badge" src="assets/img/years-riaa.png"
+                 alt="25+ years of service — RIAA certified" decoding="async" loading="lazy" />
+          </div>
+
+          <div class="col-lg-8">
+            <p class="studios-text">
+              As one of Miami's most popular recording facilities, Bay Eight Studios
+              needs no introduction. For over 25 years, our multi-studio complex has
+              offered a variety of high-quality rooms and state-of-the-art equipment
+              fit for any session.
+            </p>
+
+            <div class="row g-3">
+              <div class="col-xl-7">
+                <ul class="stat-box">
+                  <li class="stat">
+                    <span class="stat-value">100+</span>
+                    <span class="stat-label">Platinum Records</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" fill="#c9a227" />
+                      <circle cx="12" cy="12" r="6" fill="none" stroke="#f0dc9a" stroke-width="0.8" />
+                      <circle cx="12" cy="12" r="2.6" fill="#f5ead0" />
+                      <circle cx="12" cy="12" r="0.7" fill="#c9a227" />
+                    </svg>
+                  </li>
+                  <li class="stat">
+                    <span class="stat-value">50+</span>
+                    <span class="stat-label">Grammy Wins</span>
+                    <svg class="stat-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 20h12v1.4H6z" fill="#9aa4c8" />
+                      <path d="M10.4 13.6h3.2V20h-3.2z" fill="#9aa4c8" />
+                      <path d="M12 2.6c3.4 0 6.2 2.8 6.2 6.2S15.4 15 12 15 5.8 12.2 5.8 8.8 8.6 2.6 12 2.6z"
+                            fill="#5b6cb0" />
+                      <path d="M12 5.2a3.6 3.6 0 1 1 0 7.2 3.6 3.6 0 0 1 0-7.2z" fill="#c3ccec" />
+                    </svg>
+                  </li>
+                  <li class="stat">
+                    <span class="stat-value">9</span>
+                    <span class="stat-label">World-Class Studios</span>
+                    <span class="stat-dot" aria-hidden="true"></span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-xl-5">
+                <div class="google-box">
+                  <img class="google-mark" src="assets/img/google-top-rated.svg"
+                       alt="Google" decoding="async" loading="lazy" />
+                  <div class="google-copy">
+                    <p class="google-title">Top Rated Recording Studio in South Florida</p>
+                    <p class="google-rating">
+                      <span class="google-score">4.9</span>
+                      <span class="google-stars" role="img" aria-label="4.9 out of 5 stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <span class="google-reviews">645+<small>Reviews</small></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Perks marquee — repeated above and below the suite carousel -->
+      <div class="perks" aria-label="What every session includes">
+        <div class="perks-track">
+          <div class="perks-group">
+            <span>Engineer Included</span><span class="perks-sep">|</span>
+            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+          </div>
+          <div class="perks-group" aria-hidden="true">
+            <span>Engineer Included</span><span class="perks-sep">|</span>
+            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="suites">
+        <p class="suites-location">
+          <span class="suites-location-text">Bay Eight NoMi</span>
+          <span class="suites-location-dot" aria-hidden="true"></span>
+        </p>
+
+        <div class="suites-frame">
+          <div class="suites-rail js-rail no-scrollbar" id="suitesRail">
+
+            <article class="suite">
+              <img src="assets/img/studios/ssl-suite.jpg"
+                   alt="The SSL Suite control room at Bay Eight Studios"
+                   decoding="async" loading="lazy" />
+              <div class="suite-body">
+                <h3 class="suite-name">SSL Suite</h3>
+                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami Beach, FL</p>
+                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+              </div>
+            </article>
+
+            <article class="suite">
+              <img src="assets/img/studios/douglas-suite.jpg"
+                   alt="The Douglas Suite lounge at Bay Eight Studios"
+                   decoding="async" loading="lazy" />
+              <div class="suite-body">
+                <h3 class="suite-name">Douglas Suite</h3>
+                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
+                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+              </div>
+            </article>
+
+            <article class="suite">
+              <img src="assets/img/studios/whisper-suite.jpg"
+                   alt="The Whisper Suite control room at Bay Eight Studios"
+                   decoding="async" loading="lazy" />
+              <div class="suite-body">
+                <h3 class="suite-name">Whisper Suite</h3>
+                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
+                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+              </div>
+            </article>
+
+          </div>
+
+          <button type="button" class="suites-nav suites-prev" data-rail="suitesRail" data-dir="-1"
+                  aria-label="Previous suite">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+          <button type="button" class="suites-nav suites-next" data-rail="suitesRail" data-dir="1"
+                  aria-label="Next suite">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="perks" aria-hidden="true">
+        <div class="perks-track perks-track-reverse">
+          <div class="perks-group">
+            <span>Engineer Included</span><span class="perks-sep">|</span>
+            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+          </div>
+          <div class="perks-group">
+            <span>Engineer Included</span><span class="perks-sep">|</span>
+            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 5 — OUR SERVICES
+         Full-bleed poster strip; colour panels alternate with photos.
+         The broken words (RECORD/ING) come from word-break: break-all,
+         so they re-flow with the panel instead of being hard-coded.
+         ========================================================== -->
+    <section id="services" class="services">
+
+      <div class="container">
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>Our Services
+        </h2>
+        <p class="welcome-sub">Award-Winning Audio Services</p>
+      </div>
+
+      <div class="services-rail no-scrollbar" id="servicesRail">
+
+        <a class="svc svc--lime" href="#contact">
+          <span class="svc-mark svc-mark--dot" aria-hidden="true"></span>
+          <span class="svc-title">Recording</span>
+          <span class="svc-foot">
+            <span class="svc-tag" data-tag="Recording">Recording</span>
+            <span class="svc-brand">Bay Eight Studios 2026</span>
+          </span>
+        </a>
+
+        <div class="svc svc--photo">
+          <img src="assets/img/sessions/session-c.jpg"
+               alt="A session in progress at Bay Eight Studios" decoding="async" loading="lazy" />
+          <span class="svc-label">Bay Eight Studios</span>
+          <span class="svc-foot">
+            <span class="svc-tag svc-tag--lime" data-tag="Bay8">Bay8</span>
+          </span>
+        </div>
+
+        <a class="svc svc--lavender svc--vertical" href="#contact">
+          <span class="svc-mark svc-mark--asterisk" aria-hidden="true">✳</span>
+          <span class="svc-title">Mixing Mixing Mixing</span>
+          <span class="svc-foot">
+            <span class="svc-tag" data-tag="Mixing">Mixing</span>
+          </span>
+        </a>
+
+        <a class="svc svc--red" href="#contact">
+          <span class="svc-mark svc-mark--plus" aria-hidden="true">+</span>
+          <span class="svc-title">Mastering</span>
+          <span class="svc-foot">
+            <span class="svc-tag svc-tag--lime" data-tag="Mastering">Mastering</span>
+            <span class="svc-brand">Bay Eight Studios 2026</span>
+          </span>
+        </a>
+
+        <div class="svc svc--photo">
+          <img src="assets/img/sessions/session-a.jpg"
+               alt="The pink-lit control room at Bay Eight Studios" decoding="async" loading="lazy" />
+          <span class="svc-label">Bay Eight Studios</span>
+          <span class="svc-foot">
+            <span class="svc-tag svc-tag--red" data-tag="Bay8">Bay8</span>
+          </span>
+        </div>
+
+        <a class="svc svc--lime" href="#contact">
+          <span class="svc-mark svc-mark--chevron" aria-hidden="true">&gt;</span>
+          <span class="svc-title">Music Production</span>
+          <span class="svc-foot">
+            <span class="svc-tag" data-tag="Music Production">Music Production</span>
+            <span class="svc-brand">Bay Eight Studios 2026</span>
+          </span>
+        </a>
+
+        <a class="svc svc--lavender" href="#contact">
+          <span class="svc-mark svc-mark--dot" aria-hidden="true"></span>
+          <span class="svc-title">Voiceover ADR</span>
+          <span class="svc-foot">
+            <span class="svc-tag" data-tag="Voiceover">Voiceover</span>
+            <span class="svc-brand">Bay Eight Studios 2026</span>
+          </span>
+        </a>
+
+      </div>
+
+      <div class="container">
+        <a class="services-all" href="#contact">All Services <span aria-hidden="true">&gt;</span></a>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 6 — OUR REVIEWS
+         Two marquee rows running in opposite directions. Each row holds
+         two identical groups so translateX(-50%) loops seamlessly.
+         ========================================================== -->
+    <section id="reviews" class="reviews">
+
+      <div class="container">
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>Our Reviews
+        </h2>
+        <p class="welcome-sub">Why Artists Keep Choosing Bay Eight</p>
+        <p class="reviews-intro">
+          Artists from every genre choose Bay Eight to bring their biggest records
+          to life. Here's what they have to say.
+        </p>
+      </div>
+
+      <div class="reviews-row">
+        <div class="reviews-track">
+          <div class="reviews-group">
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar" aria-hidden="true">M</span>
+                <span class="review-meta">
+                  <span class="review-name">My Turn Music Group</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <blockquote class="review-text">I had a great experience at Bay 8. Very comfortable</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar" aria-hidden="true">G</span>
+                <span class="review-meta">
+                  <span class="review-name">Giftman 123</span>
+                  <span class="review-when">5 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <blockquote class="review-text">Man, There is this guy who goes by Zane who is just a</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar" aria-hidden="true">J</span>
+                <span class="review-meta">
+                  <span class="review-name">JaiDon Powell</span>
+                  <span class="review-when">2 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <blockquote class="review-text">booked a 2 hour session in the whisper room on NYE</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar" aria-hidden="true">F</span>
+                <span class="review-meta">
+                  <span class="review-name">FUTURE</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <blockquote class="review-text">Let's go shout out to Bay 8 studios for the best studio in</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar" aria-hidden="true">O</span>
+                <span class="review-meta">
+                  <span class="review-name">OP3 Rek</span>
+                  <span class="review-when">10 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </span>
+              <blockquote class="review-text">Studio crew is always ON POINT, NICE, and</blockquote>
+            </figure>
+          </div>
+          <div class="reviews-group" aria-hidden="true">
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">M</span>
+                <span class="review-meta">
+                  <span class="review-name">My Turn Music Group</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">I had a great experience at Bay 8. Very comfortable</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">G</span>
+                <span class="review-meta">
+                  <span class="review-name">Giftman 123</span>
+                  <span class="review-when">5 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Man, There is this guy who goes by Zane who is just a</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">J</span>
+                <span class="review-meta">
+                  <span class="review-name">JaiDon Powell</span>
+                  <span class="review-when">2 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">booked a 2 hour session in the whisper room on NYE</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">F</span>
+                <span class="review-meta">
+                  <span class="review-name">FUTURE</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Let's go shout out to Bay 8 studios for the best studio in</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">O</span>
+                <span class="review-meta">
+                  <span class="review-name">OP3 Rek</span>
+                  <span class="review-when">10 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Studio crew is always ON POINT, NICE, and</blockquote>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-row" aria-hidden="true">
+        <div class="reviews-track reviews-track-reverse">
+          <div class="reviews-group">
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">G</span>
+                <span class="review-meta">
+                  <span class="review-name">Giftman 123</span>
+                  <span class="review-when">5 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Man, There is this guy who goes by Zane who is just a</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">J</span>
+                <span class="review-meta">
+                  <span class="review-name">JaiDon Powell</span>
+                  <span class="review-when">2 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">booked a 2 hour session in the whisper room on NYE</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">F</span>
+                <span class="review-meta">
+                  <span class="review-name">FUTURE</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Let's go shout out to Bay 8 studios for the best studio in</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">O</span>
+                <span class="review-meta">
+                  <span class="review-name">OP3 Rek</span>
+                  <span class="review-when">10 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Studio crew is always ON POINT, NICE, and</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">M</span>
+                <span class="review-meta">
+                  <span class="review-name">My Turn Music Group</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">I had a great experience at Bay 8. Very comfortable</blockquote>
+            </figure>
+          </div>
+          <div class="reviews-group">
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">G</span>
+                <span class="review-meta">
+                  <span class="review-name">Giftman 123</span>
+                  <span class="review-when">5 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Man, There is this guy who goes by Zane who is just a</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">J</span>
+                <span class="review-meta">
+                  <span class="review-name">JaiDon Powell</span>
+                  <span class="review-when">2 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">booked a 2 hour session in the whisper room on NYE</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">F</span>
+                <span class="review-meta">
+                  <span class="review-name">FUTURE</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Let's go shout out to Bay 8 studios for the best studio in</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">O</span>
+                <span class="review-meta">
+                  <span class="review-name">OP3 Rek</span>
+                  <span class="review-when">10 months ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">Studio crew is always ON POINT, NICE, and</blockquote>
+            </figure>
+            <figure class="review">
+              <header class="review-head">
+                <span class="review-avatar">M</span>
+                <span class="review-meta">
+                  <span class="review-name">My Turn Music Group</span>
+                  <span class="review-when">a month ago</span>
+                </span>
+              </header>
+              <span class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></span>
+              <blockquote class="review-text">I had a great experience at Bay 8. Very comfortable</blockquote>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 7 — HOW TO BOOK A SESSION
+         ========================================================== -->
+    <section id="booking" class="booking">
+
+      <div class="booking-media" aria-hidden="true">
+        <img src="assets/img/sessions/session-a.jpg" alt="" decoding="async" loading="lazy" />
+        <div class="booking-overlay"></div>
+      </div>
+
+      <div class="container booking-inner">
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>How to Book a Session
+        </h2>
+        <p class="welcome-sub welcome-sub--sm">Have Everything Set Before You Arrive</p>
+        <p class="booking-intro">Our booking process, from start to finish. Here's how it works.</p>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-chevron" aria-hidden="true">&gt;</span>
+            <span class="step-num">Step 1</span>
+            <div class="step-body">
+              <h3 class="step-title">Schedule Your Session</h3>
+              <p class="step-text">
+                Call, text, or email. We'll sort out dates and your session needs.
+                We're open 24 hours 7 days a week.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-chevron" aria-hidden="true">&gt;</span>
+            <span class="step-num">Step 2</span>
+            <div class="step-body">
+              <h3 class="step-title">Choose Your Recording Suite</h3>
+              <p class="step-text">
+                Pick the room that fits your project. If you're not sure, just ask,
+                and we can help make a decision.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-chevron" aria-hidden="true">&gt;</span>
+            <span class="step-num">Step 3</span>
+            <div class="step-body">
+              <h3 class="step-title">Pair With an Engineer</h3>
+              <p class="step-text">
+                Work with an engineer who understands your style. If you don't have
+                one in mind, we'll match you with someone who gets your genre and
+                workflow.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-chevron" aria-hidden="true">&gt;</span>
+            <span class="step-num">Step 4</span>
+            <div class="step-body">
+              <h3 class="step-title">Secure Your Booking</h3>
+              <p class="step-text">
+                Place your deposit to confirm your session. Your studio time is locked
+                in, the room's ready, and all you need to do is arrive and create.
+              </p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="text-center">
+          <a class="btn btn-lime" href="#contact">Contact Us</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 8 — OUR ENGINEERS
+         ========================================================== -->
+    <section id="engineers" class="engineers">
+      <div class="container">
+
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>Our Engineers
+        </h2>
+        <p class="welcome-sub welcome-sub--sm">The Team Behind Gold, Platinum, and Diamond Records</p>
+        <p class="booking-intro engineers-intro">
+          Our engineers have established themselves as Miami's top sound engineers.
+          They are Pro Tools experts who've spent years recording and mixing. They
+          understand how to keep the session moving so you keep creating. When you
+          book at Bay Eight, you're working with seasoned engineers who know how to
+          get the most out of our rooms, and out of you.
+        </p>
+
+        <div class="eng-wrap">
+          <div class="eng-rail js-rail no-scrollbar" id="engineersRail">
+
+            <article class="eng">
+              <p class="eng-role">SR Engineer</p>
+              <div class="eng-photo eng-photo--warm">
+                <img src="assets/img/engineers/geeflow.png" alt="GeeFlowCL" decoding="async" loading="lazy" />
+                <img class="eng-badge" src="assets/img/riaa-badge.png" alt="RIAA certified" decoding="async" loading="lazy" />
+              </div>
+              <h3 class="eng-name">GeeFlowCL</h3>
+              <p class="eng-title">Diamond Certified Engineer</p>
+              <p class="eng-text">
+                With over two decades of experience, Gee Flow is a Diamond Certified
+                Engineer whose credits span global icons including Juice WRLD, DMX,
+                Katy Perry, Ozuna, and Queen. His depth of knowledge and adaptability
+                across genres allow him to move effortlessly between styles while
+                maintaining a consistently high standard.
+              </p>
+            </article>
+
+            <article class="eng">
+              <p class="eng-role">House Engineer</p>
+              <div class="eng-photo eng-photo--pink">
+                <span class="eng-initials" aria-hidden="true">AJ</span>
+                <img class="eng-badge" src="assets/img/riaa-badge.png" alt="RIAA certified" decoding="async" loading="lazy" />
+              </div>
+              <h3 class="eng-name">Abbey Jo</h3>
+              <p class="eng-title">A&amp;R at Columbia Records</p>
+              <p class="eng-text">
+                "Bay Eight allowed me to build strong relationships and network with
+                engineers, artists, and record label professionals. I was provided
+                hands-on experience in the studio space while being able to grow my
+                confidence and creativity in the industry. This internship taught me
+                skills that I still use in my current position today."
+              </p>
+            </article>
+
+            <article class="eng">
+              <p class="eng-role">House Engineer</p>
+              <div class="eng-photo eng-photo--purple">
+                <span class="eng-initials" aria-hidden="true">JG</span>
+                <img class="eng-badge" src="assets/img/riaa-badge.png" alt="RIAA certified" decoding="async" loading="lazy" />
+              </div>
+              <h3 class="eng-name">Jeronimo "J Gross" Hernandez</h3>
+              <p class="eng-title">5x Platinum and Grammy Nominee Producer and Artist</p>
+              <p class="eng-text">
+                "Bay Eight disciplined me with a strong work ethic, making sure every
+                client was more than satisfied with my service. My hardest sessions
+                were at Bay Eight, but they made me the professional I am today,
+                someone who can work efficiently under pressure."
+              </p>
+            </article>
+
+          </div>
+
+          <button type="button" class="rail-nav rail-prev" data-rail="engineersRail" data-dir="-1"
+                  aria-label="Previous engineer">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+          <button type="button" class="rail-nav rail-next" data-rail="engineersRail" data-dir="1"
+                  aria-label="Next engineer">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="text-center mt-4">
+          <a class="btn btn-lime" href="#contact">Contact Us</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 9 — BUILD YOUR SESSION
+         A live quote: room rate + add-on rates, multiplied by the hours.
+         Rooms/hours are radios and add-ons are checkboxes, so the whole
+         thing is keyboard-operable and works without custom widgets.
+         ========================================================== -->
+    <section id="pricing" class="builder">
+
+      <div class="builder-media" aria-hidden="true">
+        <img src="assets/img/studios/whisper-suite.jpg" alt="" decoding="async" loading="lazy" />
+        <div class="builder-overlay"></div>
+      </div>
+
+      <div class="container builder-inner">
+        <h2 class="welcome-title">
+          <span class="welcome-dot" aria-hidden="true"></span>Build Your Session
+        </h2>
+        <p class="welcome-sub builder-sub">
+          Choose the Room <span class="builder-sep">|</span>
+          Choose the Hours <span class="builder-sep">|</span>
+          Add What You Need
+        </p>
+        <p class="booking-intro">See the rate and total before you commit. No surprises.</p>
+
+        <div class="builder-panel">
+          <div class="row g-3 g-lg-4">
+
+            <div class="col-lg-7">
+              <form class="builder-form" id="builderForm">
+
+                <p class="builder-label">Room</p>
+                <div class="rooms">
+                  <label class="room">
+                    <input type="radio" name="room" value="SSL Suite" data-price="135" />
+                    <img src="assets/img/studios/ssl-suite.jpg" alt="SSL Suite" decoding="async" loading="lazy" />
+                    <span class="room-info">
+                      <span class="room-name">SSL Suite</span>
+                      <span class="room-price">$135</span>
+                      <span class="room-per">Per Hour</span>
+                    </span>
+                  </label>
+                  <label class="room">
+                    <input type="radio" name="room" value="Douglas Suite" data-price="105" />
+                    <img src="assets/img/studios/douglas-suite.jpg" alt="Douglas Suite" decoding="async" loading="lazy" />
+                    <span class="room-info">
+                      <span class="room-name">Douglas Suite</span>
+                      <span class="room-price">$105</span>
+                      <span class="room-per">Per Hour</span>
+                    </span>
+                  </label>
+                  <label class="room">
+                    <input type="radio" name="room" value="Whisper Room" data-price="85" checked />
+                    <img src="assets/img/studios/whisper-suite.jpg" alt="Whisper Room" decoding="async" loading="lazy" />
+                    <span class="room-info">
+                      <span class="room-name">Whisper Room</span>
+                      <span class="room-price">$85</span>
+                      <span class="room-per">Per Hour</span>
+                    </span>
+                  </label>
+                </div>
+
+                <p class="builder-label">Hours</p>
+                <div class="hours">
+                  <label class="hour">
+                    <input type="radio" name="hours" value="4" />
+                    <span class="hour-face"><b>4</b><small>hr</small></span>
+                  </label>
+                  <label class="hour">
+                    <input type="radio" name="hours" value="6" />
+                    <span class="hour-face"><b>6</b><small>hr</small></span>
+                  </label>
+                  <label class="hour">
+                    <input type="radio" name="hours" value="8" checked />
+                    <span class="hour-face"><b>8</b><small>hr</small></span>
+                  </label>
+                  <label class="hour">
+                    <input type="radio" name="hours" value="12" />
+                    <span class="hour-face"><b>12</b><small>hr</small></span>
+                  </label>
+                </div>
+                <p class="builder-note">4-hour minimum · 3-hour minimum before 2pm</p>
+
+                <p class="builder-label">
+                  Add-ons <span class="builder-optional">Optional</span>
+                </p>
+                <div class="addons">
+                  <label class="addon">
+                    <input type="checkbox" name="addon" value="Producer" data-price="50" checked />
+                    <span class="addon-box" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                    <span class="addon-name">Producer at the session</span>
+                    <span class="addon-price">+$50<small>/hr</small></span>
+                  </label>
+                  <label class="addon">
+                    <input type="checkbox" name="addon" value="Senior engineer" data-price="30" checked />
+                    <span class="addon-box" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                    <span class="addon-name">Senior engineer alongside the house engineer</span>
+                    <span class="addon-price">+$30<small>/hr</small></span>
+                  </label>
+                  <label class="addon">
+                    <input type="checkbox" name="addon" value="Songwriter" data-price="50" />
+                    <span class="addon-box" aria-hidden="true"><i class="bi bi-check-lg"></i></span>
+                    <span class="addon-name">Songwriter, collaborative</span>
+                    <span class="addon-price">+$50<small>/hr</small></span>
+                  </label>
+                </div>
+
+              </form>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="summary">
+                <p class="builder-label summary-title">
+                  <span class="summary-dot" aria-hidden="true"></span>Your Session
+                </p>
+
+                <dl class="summary-list">
+                  <div class="summary-row">
+                    <dt>Room</dt>
+                    <dd>
+                      <span id="sumRoom">Whisper Room</span>
+                      <span class="summary-rate" id="sumRate">$85/hr</span>
+                    </dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt>Hours</dt>
+                    <dd id="sumHours">8 hr</dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt>Add-ons</dt>
+                    <dd id="sumAddons">Producer · Senior engineer</dd>
+                  </div>
+                </dl>
+
+                <p class="summary-total">
+                  <span class="summary-total-label">Total</span>
+                  <span class="summary-total-value">
+                    <span class="summary-cur" aria-hidden="true">$</span><span id="sumTotal">1,320</span>
+                  </span>
+                </p>
+
+                <div class="summary-actions">
+                  <a class="btn btn-light-flat" href="#contact">Send to Front Desk</a>
+                  <a class="btn btn-lime" href="tel:+13057052405">Call Bay Eight</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         SECTION 10 — READY TO RECORD? (contact)
+         Front-end only: the form validates and shows an inline success
+         state. Nothing is submitted anywhere yet.
+         ========================================================== -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <h2 class="contact-head">
+          <span class="welcome-dot" aria-hidden="true"></span>Ready to Record ?
+        </h2>
+        <p class="contact-open">Open 24/7</p>
+
+        <div class="hero-actions contact-pills">
+          <a class="pill pill-phone" href="tel:+13057052405">Call</a>
+          <a class="pill" href="sms:+13057052405">Text</a>
+          <a class="pill" href="https://wa.me/13057052405" target="_blank" rel="noopener">Whats App</a>
+          <a class="pill" href="mailto:book@bayeight.com">Email</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="row g-0">
+
+            <!-- Details -->
+            <div class="col-lg-5">
+              <div class="contact-details">
+                <a class="brand contact-brand" href="#top">
+                  <span class="brand-lines">
+                    <span>BAY</span>
+                    <span>EIGHT</span>
+                    <span>STUDIOS</span>
+                  </span>
+                </a>
+
+                <ul class="contact-list">
+                  <li>
+                    <span class="contact-icon"><i class="bi bi-envelope"></i></span>
+                    <div>
+                      <p class="contact-item-title">Email Us</p>
+                      <p class="contact-item-note">Our team is here to help.</p>
+                      <a class="contact-item-value" href="mailto:book@bayeight.com">book@bayeight.com</a>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="contact-icon"><i class="bi bi-person"></i></span>
+                    <div>
+                      <p class="contact-item-title">Visit us</p>
+                      <p class="contact-item-note">Come say hello at our Miami HQ.</p>
+                      <address class="contact-item-value">15421 W Dixie Hwy, Bay 8<br />Miami, FL 33162</address>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="contact-icon"><i class="bi bi-telephone"></i></span>
+                    <div>
+                      <p class="contact-item-title">Call us</p>
+                      <p class="contact-item-note">Available 24/7 — call or text anytime.</p>
+                      <a class="contact-item-value" href="tel:+13057052405">305-705-2405</a>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="google-box google-box--light">
+                  <img class="google-mark" src="assets/img/google-top-rated.svg" alt="Google"
+                       decoding="async" loading="lazy" />
+                  <div class="google-copy">
+                    <p class="google-title">Top Rated Recording Studio in South Florida</p>
+                    <p class="google-rating">
+                      <span class="google-score">4.9</span>
+                      <span class="google-stars" role="img" aria-label="4.9 out of 5 stars">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <span class="google-reviews">792+<small>Reviews</small></span>
+                </div>
+
+                <div class="contact-social">
+                  <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div class="col-lg-7">
+              <div class="contact-form-wrap">
+                <div class="contact-form-media" aria-hidden="true">
+                  <img src="assets/img/sessions/session-a.jpg" alt="" decoding="async" loading="lazy" />
+                  <div class="contact-form-overlay"></div>
+                </div>
+
+                <div class="contact-form-inner">
+                  <p class="contact-eyebrow">Contact Us</p>
+                  <h3 class="contact-form-title">We're Open 24/7</h3>
+                  <p class="contact-form-lead">
+                    Tell us about your project and what you're trying to make.
+                    We'll get back to you within 15 minutes.
+                  </p>
+
+                  <form class="contact-form" id="contactForm" novalidate>
+                    <div class="field">
+                      <span class="field-label">Name <em>(Required)</em></span>
+                      <div class="field-pair">
+                        <input type="text" name="first" placeholder="First" aria-label="First name" required />
+                        <input type="text" name="last" placeholder="Last" aria-label="Last name" required />
+                      </div>
+                    </div>
+
+                    <div class="field-pair">
+                      <div class="field">
+                        <label class="field-label" for="cfPhone">Phone <em>(Required)</em></label>
+                        <input type="tel" id="cfPhone" name="phone" placeholder="Phone" required />
+                      </div>
+                      <div class="field">
+                        <label class="field-label" for="cfEmail">Email <em>(Required)</em></label>
+                        <input type="email" id="cfEmail" name="email" placeholder="Email" required />
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <label class="field-label" for="cfHelp">I need help with... <em>(Required)</em></label>
+                      <select id="cfHelp" name="help" required>
+                        <option value="">Select An Option</option>
+                        <option>Recording</option>
+                        <option>Mixing</option>
+                        <option>Mastering</option>
+                        <option>Music Production</option>
+                        <option>Voiceover / ADR</option>
+                        <option>Studio Rental</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label class="field-label" for="cfRoom">Preferred room? (optional)</label>
+                      <select id="cfRoom" name="room">
+                        <option value="">---Select One---</option>
+                        <option>SSL Suite</option>
+                        <option>Douglas Suite</option>
+                        <option>Whisper Room</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label class="field-label" for="cfMessage">Message <em>(Required)</em></label>
+                      <textarea id="cfMessage" name="message" rows="3"
+                                placeholder="Give us a brief description of your request." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-pink">Submit</button>
+
+                    <p class="form-status" id="contactStatus" role="status" hidden></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         SECTION 11 — FREQUENTLY ASKED QUESTIONS
+         Built on <details>/<summary>: open/close, keyboard support and
+         screen-reader semantics come from the browser, no JS needed.
+         ========================================================== -->
+    <section id="faq" class="faq">
+
+      <div class="faq-media" aria-hidden="true">
+        <img src="assets/img/sessions/session-c.jpg" alt="" decoding="async" loading="lazy" />
+        <div class="faq-overlay"></div>
+      </div>
+
+      <div class="container faq-inner">
+        <div class="row g-4 g-lg-5">
+
+          <div class="col-lg-5">
+            <h2 class="welcome-title faq-title">
+              <span class="welcome-dot" aria-hidden="true"></span>Frequently Asked Questions
+            </h2>
+            <p class="welcome-sub">FAQ's</p>
+            <p class="booking-intro faq-intro">
+              Everything you need to know about rates, minimums, availability, and
+              what to expect when you book studio time at Bay Eight.
+            </p>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="faq-list">
+
+              <details class="faq-item">
+                <summary>
+                  What makes Bay Eight Recording Studio in Miami stand out?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    Twenty-five years of work, RIAA Platinum certification, and a 4.9
+                    rating from more than 790 Google reviews. Artists like Nas, Ed
+                    Sheeran, J Balvin, Diplo, Tainy, and Swae Lee have recorded in
+                    these rooms.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  How much does studio time cost?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    The SSL Suite is $135/hr, the Douglas Suite is $105/hr, and the
+                    Whisper Room is $85/hr. An engineer is included in every rate —
+                    use the session builder above to see your total before you book.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  Is there a minimum booking?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    Sessions have a 4-hour minimum, or a 3-hour minimum if you start
+                    before 2pm.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  What hours are you open?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    24 hours a day, 7 days a week. Call or text 305-705-2405 any time
+                    and we'll get back to you within 15 minutes.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  Is an engineer included, and can I bring my own?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    A house engineer is included with every session. You can add a
+                    producer (+$50/hr), a senior engineer alongside the house engineer
+                    (+$30/hr), or a collaborative songwriter (+$50/hr). If you don't
+                    have someone in mind, we'll match you with an engineer who knows
+                    your genre.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary>
+                  What else comes with a session?
+                  <span class="faq-icon" aria-hidden="true"></span>
+                </summary>
+                <div class="faq-answer">
+                  <p>
+                    Free monitored parking, complimentary snacks and refreshments, and
+                    absolute privacy in the studio. We're at 15421 W Dixie Hwy, Bay 8,
+                    Miami, FL 33162.
+                  </p>
+                </div>
+              </details>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       FOOTER
+       ========================================================== -->
+  <footer class="site-footer">
+
+    <!-- Sign-off band -->
+    <div class="container footer-signoff">
+      <div>
+        <p class="footer-shout">
+          <span class="welcome-dot" aria-hidden="true"></span>Bay Eight Studios
+        </p>
+        <p class="footer-tagline">Loud and Clear</p>
+      </div>
+      <a class="btn btn-lime footer-cta" href="#contact">Contact Us</a>
+    </div>
+
+    <!-- Link grid -->
+    <div class="container">
+      <div class="footer-panel">
+        <div class="row g-4">
+
+          <div class="col-6 col-lg-2">
+            <h2 class="footer-title"><span>Explore</span> Site</h2>
+            <ul class="footer-list">
+              <li><a href="#top">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#clients">Clients</a></li>
+              <li><a href="#studios">Studios</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#faq">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <h2 class="footer-title"><span>Services</span></h2>
+            <ul class="footer-list">
+              <li><a href="#services">Recording</a></li>
+              <li><a href="#services">Mixing</a></li>
+              <li><a href="#services">Mastering</a></li>
+              <li><a href="#services">Music Production</a></li>
+              <li><a href="#services">Voice Over ADR</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-2">
+            <h2 class="footer-title"><span>Studios</span></h2>
+            <ul class="footer-list">
+              <li><a href="#studios">SSL Room</a></li>
+              <li><a href="#studios">Apollo Room</a></li>
+              <li><a href="#studios">Whisper Room</a></li>
+            </ul>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <h2 class="footer-title"><span>Connect</span> With Us</h2>
+            <p class="footer-contact">
+              <span class="footer-contact-head"><i class="bi bi-telephone-fill"></i>Call Us</span>
+              <a href="tel:+13059014913">(305) 901-4913</a>
+            </p>
+            <hr class="footer-rule" />
+            <p class="footer-contact">
+              <a class="footer-contact-head" href="#contact"><i class="bi bi-envelope-fill"></i>Contact Us</a>
+            </p>
+          </div>
+
+          <div class="col-lg-2 d-flex align-items-center justify-content-lg-end">
+            <img class="footer-years" src="assets/img/years-riaa.png"
+                 alt="25+ years of service — RIAA certified" decoding="async" loading="lazy" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Address / partners / rating -->
+    <div class="container footer-info">
+      <div class="row g-4 align-items-center">
+
+        <div class="col-6 col-lg-2">
+          <a class="brand footer-brand" href="#top">
+            <span class="brand-lines">
+              <span>BAY</span>
+              <span>EIGHT</span>
+              <span>STUDIOS</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h2 class="footer-subtitle">Get Directions</h2>
+          <address class="footer-address">
+            15421 West Dixie Hwy Bay 8<br />
+            North Miami Beach, FL 33162
+          </address>
+          <p class="footer-hours">Open 24 Hours</p>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h2 class="footer-subtitle">Our Partners</h2>
+          <p class="footer-partner">BEMP</p>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="google-box google-box--light">
+            <img class="google-mark" src="assets/img/google-top-rated.svg" alt="Google"
+                 decoding="async" loading="lazy" />
+            <div class="google-copy">
+              <p class="google-title">Top Rated Recording Studio in South Florida</p>
+              <p class="google-rating">
+                <span class="google-score">4.9</span>
+                <span class="google-stars" role="img" aria-label="4.9 out of 5 stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </span>
+              </p>
+            </div>
+            <span class="google-reviews">645+<small>Reviews</small></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Legal bar -->
+    <div class="container footer-legal">
+      <p class="footer-copy">
+        Bay Eight Recording Studios Miami. All Rights Reserved <span id="year"></span>.
+      </p>
+      <a class="footer-privacy" href="#">Privacy Policy</a>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Floating actions -->
+  <a class="chat-bubble" href="https://wa.me/13057052405" target="_blank" rel="noopener"
+     aria-label="Chat with Bay Eight on WhatsApp">
+    <i class="bi bi-chat-dots-fill"></i>
+  </a>
+
+  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden>
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Project scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
