@@ -6,8 +6,9 @@
 
 :root {
   /* Palette — dark studio look with the magenta brand accent from the Canva mock */
-  --bg:            #000000;
-  --bg-alt:        #0b0b0c;
+  --bg:            #111111;
+  /* Kept a step lighter than --bg so panels read as raised, not as holes */
+  --bg-alt:        #171717;
   --surface:       #141416;
   --surface-2:     #1c1c20;
   --line:          rgba(255, 255, 255, 0.08);
@@ -234,17 +235,26 @@ a { text-decoration: none; }
   background-color: #0a0a0a;
 }
 
+.hero-still,
 .hero-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  /* The hero backdrop runs black and white, as in the Canva design */
+  filter: grayscale(1) contrast(1.05);
 }
+
+/* The video covers the still once it starts */
+.hero-video { z-index: 1; }
 
 /* Darkens the footage so the magenta type stays readable */
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
   background:
     linear-gradient(to bottom,
       rgba(0, 0, 0, 0.70) 0%,
@@ -264,12 +274,21 @@ a { text-decoration: none; }
 .hero-title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.4rem, 8.6vw, 8.5rem);
+  font-size: 124px;
   line-height: 0.95;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: var(--accent);
+  /* Held back a little so the type sits into the footage rather than on top
+     of it, as in the mock */
+  opacity: 0.88;
   margin-bottom: 0.15em;
+}
+
+/* "BAY EIGHT STUDIOS" stops fitting on one line below roughly this width,
+   so the type scales with the viewport from here down */
+@media (max-width: 1400px) {
+  .hero-title { font-size: 9vw; }
 }
 
 .hero-subtitle {
@@ -285,16 +304,18 @@ a { text-decoration: none; }
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--accent);
+  /* Matches the title, and fades the Miami mark with it */
+  opacity: 0.88;
   margin-bottom: 1.4rem;
 }
 
+/* Sized in em so the mark scales with the line it sits on. Centred rather than
+   baseline-aligned, because the script's tail hangs below its baseline. */
 .hero-script {
-  font-family: var(--font-script);
-  font-weight: 700;
-  font-size: 1.15em;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--accent);
+  height: 1.55em;
+  width: auto;
+  align-self: center;
+  transform: translateY(-0.06em);
 }
 
 .hero-kicker {
@@ -315,6 +336,9 @@ a { text-decoration: none; }
 }
 
 .pill {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -326,14 +350,19 @@ a { text-decoration: none; }
   text-transform: uppercase;
   padding: 0.65rem 1.35rem;
   border-radius: 6px;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .pill:hover {
   transform: translateY(-2px);
   background-color: var(--accent);
   color: #ffffff;
+  box-shadow: 0 10px 26px rgba(232, 34, 118, 0.35);
 }
+
+/* The sweep is white by default, which would vanish once the pill turns pink */
+.pill::after { background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.6) 50%, transparent 65%); }
 
 .pill-phone { color: var(--accent); }
 .pill-phone .bi { color: var(--accent); }
@@ -370,7 +399,9 @@ a { text-decoration: none; }
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee-scroll 32s linear infinite;
+  /* Eleven logos per group now, so the loop runs longer to keep the same
+     reading speed it had with six wordmarks */
+  animation: marquee-scroll 55s linear infinite;
 }
 
 .marquee-group {
@@ -381,7 +412,7 @@ a { text-decoration: none; }
 
 /* Spacing lives on the items, not as a track `gap` — that keeps the two
    groups exactly equal in width, so translateX(-50%) lands on the seam. */
-.logo-item { margin-inline: clamp(1.25rem, 3vw, 2.75rem); }
+.logo-item { margin-inline: clamp(0.75rem, 1.8vw, 1.75rem); }
 
 .marquee:hover .marquee-track { animation-play-state: paused; }
 
@@ -391,25 +422,23 @@ a { text-decoration: none; }
   to   { transform: translateX(-50%); }
 }
 
-/* Placeholder wordmarks — replace each with <img src="assets/img/logos/*.svg"> */
 .logo-item {
   flex: 0 0 auto;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.85);
 }
 
+/* The source files are pink and purple. brightness(0) flattens each mark to
+   black and invert(1) flips it to white — a clean mono silhouette on the dark
+   hero, with the PNG transparency left intact. */
 .marquee img.logo-item {
-  height: clamp(24px, 3vw, 38px);
+  height: clamp(32px, 4vw, 54px);
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: grayscale(1) brightness(0) invert(1);
   opacity: 0.85;
+  transition: opacity 0.25s ease;
 }
+
+.marquee img.logo-item:hover { opacity: 1; }
 
 /* --------------------------------------------------------------------------
    SECTION 2 — Artists who work in our studios
@@ -417,36 +446,45 @@ a { text-decoration: none; }
 .artists {
   background-color: var(--bg);
   padding-block: clamp(2rem, 5vw, 4rem);
-  /* Height of the name label under each photo. The centre card is nudged up
-     by half of this so it sits over the photos and never covers a name. */
-  --name-h: 3rem;
+  /* Height of the name label under each photo. The card's negative top margin
+     is measured from it, so the card lands relative to the photos' bottom
+     edge rather than the bottom of the whole strip. */
+  --name-h: 2.75rem;
 }
 
 .artists-row { position: relative; }
 
-.artists-strip {
+/* The container sets the width; this just clips the moving track to it */
+.artists-marquee { overflow: hidden; }
+
+.artists-track {
   display: flex;
-  gap: 4px;
-  padding-inline: 4px;
+  width: max-content;
+  animation: marquee-scroll 70s linear infinite;
 }
 
-/* Each portrait is a button so the hover behaviour is keyboard-reachable */
+.artists-group {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+/* Pausing on hover lets someone stop on a face and read the name */
+.artists-row:hover .artists-track { animation-play-state: paused; }
+
 .artist {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 clamp(8.5rem, 13.5vw, 13.5rem);
   display: flex;
   flex-direction: column;
   padding: 0;
   background: none;
   border: 0;
   text-align: center;
-  cursor: pointer;
 }
 
 .artist-photo {
   display: block;
   overflow: hidden;
-  aspect-ratio: 5 / 6;
+  aspect-ratio: 3 / 4;
 }
 
 .artist-photo img {
@@ -471,23 +509,18 @@ a { text-decoration: none; }
   transition: color 0.3s ease;
 }
 
-/* Dim every portrait except the active one, but only once the visitor is
-   actually pointing at the strip */
-.artists-row.has-active .artist:not(.is-active) .artist-photo img {
+/* Only dim the rest while someone is pointing at the strip. Tying this to the
+   auto-scrolling active item instead would make the whole row flicker. */
+.artists-row:hover .artist:not(.is-active) .artist-photo img {
   opacity: 0.35;
   filter: grayscale(1);
 }
 
-.artists-row.has-active .artist.is-active .artist-photo img {
+.artists-row:hover .artist.is-active .artist-photo img {
   transform: scale(1.04);
 }
 
 .artist.is-active .artist-name { color: var(--ink); }
-
-.artist:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
 
 /* Centre card */
 .artists-card {
@@ -532,52 +565,50 @@ a { text-decoration: none; }
   background-color: var(--accent);
 }
 
-/* Desktop: the card floats over the middle of the portrait strip */
-@media (min-width: 992px) {
-  .artists-card {
-    position: absolute;
-    left: 50%;
-    top: calc(50% - var(--name-h) / 2);
-    transform: translate(-50%, -50%);
-    width: min(56rem, 84%);
-  }
+/* The card sits low, as in the design: its top edge bites into the bottom of
+   the photos and the rest hangs below the strip. Keeping it in flow (pulled up
+   with a negative margin, rather than absolutely positioned) means the section
+   still grows to contain it. */
+.artists-card {
+  position: relative;
+  width: min(56rem, 88%);
+  margin-inline: auto;
+  /* Overlap is ~17% of the card in the mock — the card mostly hangs below the
+     strip and only bites into the very bottom of the photos */
+  margin-top: calc(-1 * (var(--name-h) + clamp(1rem, 2.5vw, 2.5rem)));
 }
 
-/* Below lg the card would bury the photos, so it stacks above a swipe strip */
-@media (max-width: 991.98px) {
-  .artists-card {
-    margin-bottom: 1.5rem;
-    margin-inline: 1rem;
-  }
-
-  .artists-strip {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 8px;
-  }
-
-  .artist {
-    flex: 0 0 clamp(9rem, 42vw, 14rem);
-    scroll-snap-align: center;
-  }
+@media (max-width: 575.98px) {
+  /* Names would sit under the card and read as noise at this size */
+  .artist-name { display: none; }
+  .artists { --name-h: 0rem; }
 }
 
 /* --------------------------------------------------------------------------
    SECTION 3 — Welcome to Bay Eight
    -------------------------------------------------------------------------- */
 .welcome {
-  background-color: var(--bg-alt);
+  background-color: var(--bg);
   padding-block: clamp(2.5rem, 6vw, 5rem);
-  padding-inline: clamp(0.75rem, 2vw, 2rem);
 }
 
+/* The card runs off the left edge of the page while its copy still starts on
+   the same line as every other section's heading.
+   --bleed is the gap between the container's content edge and the viewport
+   edge. Pulling the card out by it and padding it back in by the same value
+   means the text lands exactly on the container edge — whatever the width. */
 .welcome-card {
-  max-width: 1440px;
-  margin-inline: auto;
+  --bleed: calc(50vw - 50%);
+  margin-left: calc(-1 * var(--bleed));
+  margin-right: calc(clamp(1rem, 5vw, 5rem) - var(--bleed));
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: clamp(18px, 2.2vw, 32px);
+  border-left: 0;
+  border-radius: 0 clamp(18px, 2.2vw, 32px) clamp(18px, 2.2vw, 32px) 0;
   padding: clamp(1.5rem, 3.5vw, 3.25rem);
-  background-color: var(--bg-alt);
+  padding-left: var(--bleed);
+  /* Pure black, a shade under the #111 page, so the card reads as its own
+     surface rather than a floating border */
+  background-color: #000;
 }
 
 .welcome-title {
@@ -711,7 +742,8 @@ a { text-decoration: none; }
   margin: 0;
   padding: 0.35rem 0.5rem;
   list-style: none;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: #faf8f5;
+  border: 1px solid #ded7ce;
   border-radius: 10px;
 }
 
@@ -725,21 +757,21 @@ a { text-decoration: none; }
   padding: 0.75rem 1rem;
 }
 
-.stat + .stat { border-left: 1px solid rgba(255, 255, 255, 0.18); }
+.stat + .stat { border-left: 1px solid rgba(0, 0, 0, 0.12); }
 
 .stat-value {
   font-family: var(--font-display);
   font-weight: 900;
   font-size: clamp(1.15rem, 1.9vw, 1.6rem);
   line-height: 1;
-  color: var(--ink);
+  color: #0a0a0a;
 }
 
 .stat-label {
   font-size: clamp(0.6rem, 0.72vw, 0.7rem);
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--muted);
+  color: #4a4a50;
   margin-top: 0.3rem;
 }
 
@@ -766,7 +798,8 @@ a { text-decoration: none; }
   gap: 0.75rem;
   height: 100%;
   padding: 0.85rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: #faf8f5;
+  border: 1px solid #ded7ce;
   border-radius: 10px;
 }
 
@@ -782,7 +815,7 @@ a { text-decoration: none; }
   font-size: clamp(0.7rem, 0.85vw, 0.82rem);
   font-weight: 700;
   line-height: 1.25;
-  color: var(--ink);
+  color: #0a0a0a;
   margin-bottom: 0.25rem;
 }
 
@@ -798,7 +831,7 @@ a { text-decoration: none; }
   font-weight: 900;
   font-size: clamp(1rem, 1.5vw, 1.35rem);
   line-height: 1;
-  color: var(--ink);
+  color: #0a0a0a;
 }
 
 .google-stars {
@@ -830,12 +863,14 @@ a { text-decoration: none; }
   font-weight: 700;
 }
 
-/* Perks marquee */
+/* Perks marquee — sits in the same column as the carousel frame, so it shares
+   the frame's left edge and runs off the right with it. Only the right edge
+   is faded; the left one is a real alignment point, not a soft edge. */
 .perks {
   overflow: hidden;
   padding-block: clamp(0.75rem, 1.4vw, 1.1rem);
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
 }
 
 .perks-track {
@@ -872,7 +907,9 @@ a { text-decoration: none; }
   display: flex;
   align-items: stretch;
   gap: clamp(0.5rem, 1.5vw, 1.25rem);
-  padding-inline: clamp(0.75rem, 2vw, 2rem);
+  /* Pulls the right edge out to the edge of the viewport, so the last card
+     is cut off rather than the frame stopping inside the container */
+  margin-right: calc(50% - 50vw);
 }
 
 .suites-location {
@@ -904,12 +941,17 @@ a { text-decoration: none; }
   background-color: var(--accent);
 }
 
-.suites-frame {
-  position: relative;
+/* Everything to the right of the vertical label: marquee, frame, marquee */
+.suites-stack {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+.suites-frame {
+  position: relative;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
+  border-right: 0;
+  border-radius: 12px 0 0 12px;
   padding: 6px;
 }
 
@@ -927,12 +969,16 @@ a { text-decoration: none; }
 
 .suite {
   position: relative;
-  flex: 0 0 calc((100% - 12px) / 3);
+  /* Sized against the viewport, not the rail — the rail now runs past the
+     right edge, so a percentage width would blow the cards up.
+     30vw and 12/11 are taken off the mock: a card is ~30% of the page wide
+     and very slightly wider than it is tall. */
+  flex: 0 0 clamp(15rem, 30vw, 34rem);
   min-width: 0;
   scroll-snap-align: start;
   overflow: hidden;
   border-radius: 6px;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 12 / 11;
 }
 
 .suite img {
@@ -1214,6 +1260,8 @@ a { text-decoration: none; }
 .reviews {
   background-color: var(--bg);
   padding-block: clamp(3rem, 7vw, 6rem);
+  /* Hairlines close the section off top and bottom, as in the mock */
+  border-block: 1px solid var(--line);
 }
 
 .reviews-intro {
@@ -1222,7 +1270,9 @@ a { text-decoration: none; }
   color: rgba(255, 255, 255, 0.9);
   max-width: 40rem;
   margin-top: 0.5rem;
-  margin-bottom: 0;
+  /* Sets the gap down to the first row of cards. It lives here rather than on
+     the row because the rows are siblings of .container, not of this copy. */
+  margin-bottom: clamp(2rem, 5vw, 5rem);
 }
 
 .reviews-row {
@@ -1230,7 +1280,6 @@ a { text-decoration: none; }
   padding-block: 0.6rem;
 }
 
-.reviews-row:first-of-type { margin-top: clamp(2rem, 4vw, 3.5rem); }
 
 .reviews-track {
   display: flex;
@@ -1250,8 +1299,10 @@ a { text-decoration: none; }
 .review {
   flex: 0 0 auto;
   width: clamp(15rem, 21vw, 19rem);
-  margin: 0 6px;
-  padding: clamp(0.85rem, 1.2vw, 1.15rem);
+  /* Height follows the content — cards in a row still match because the
+     track is a flex row and stretches them to the tallest one. */
+  margin-inline: clamp(0.4rem, 0.9vw, 1rem);
+  padding: clamp(1rem, 1.4vw, 1.4rem);
   background-color: #f7f7f8;
   border-radius: 8px;
   color: #1c1c1e;
@@ -1285,7 +1336,7 @@ a { text-decoration: none; }
 }
 
 .review-name {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #1c1c1e;
   white-space: nowrap;
@@ -1294,7 +1345,7 @@ a { text-decoration: none; }
 }
 
 .review-when {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: #6b6b70;
 }
@@ -1302,14 +1353,14 @@ a { text-decoration: none; }
 .review-stars {
   display: inline-flex;
   gap: 0.05em;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #f5b301;
   margin-bottom: 0.4rem;
 }
 
 .review-text {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.45;
   color: #3c3c41;
@@ -1452,13 +1503,15 @@ a { text-decoration: none; }
 
 .eng-wrap {
   position: relative;
-  /* Room for the arrows to sit outside the cards on wide screens */
-  padding-inline: clamp(0rem, 4vw, 4rem);
+  --eng-gap: clamp(1rem, 2.5vw, 2.5rem);
+  --nav-size: clamp(34px, 3.4vw, 46px);
 }
 
+/* The rail spans the container exactly, so the cards line up with the heading
+   on the left and with every other section's edge on the right. */
 .eng-rail {
   display: flex;
-  gap: clamp(0.75rem, 1.6vw, 1.5rem);
+  gap: var(--eng-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -1470,11 +1523,13 @@ a { text-decoration: none; }
 }
 
 .eng {
-  flex: 0 0 clamp(15rem, 27vw, 20rem);
+  /* Three across, filling the container exactly. Extra engineers keep this
+     width and push the rail into scrolling rather than shrinking. */
+  flex: 0 0 calc((100% - 2 * var(--eng-gap)) / 3);
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  padding: clamp(0.6rem, 1vw, 0.85rem);
+  padding: clamp(0.75rem, 1.3vw, 1.15rem);
   background-color: #faf8f5;
   border-radius: 10px;
   color: #1c1c1e;
@@ -1565,7 +1620,7 @@ a { text-decoration: none; }
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: clamp(34px, 3.4vw, 46px);
+  width: var(--nav-size);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -1579,8 +1634,15 @@ a { text-decoration: none; }
   transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
-.rail-prev { left: 0; }
-.rail-next { right: 0; }
+/* Narrow screens have no room beside the container, so the arrows overlap the
+   rail edge; from here up they move out into the page margin. */
+.rail-prev { left: 0.5rem; }
+.rail-next { right: 0.5rem; }
+
+@media (min-width: 1500px) {
+  .rail-prev { left: calc(-1 * (var(--nav-size) + 1.25rem)); }
+  .rail-next { right: calc(-1 * (var(--nav-size) + 1.25rem)); }
+}
 
 .rail-nav:hover {
   transform: translateY(-50%) scale(1.1);
@@ -1592,10 +1654,13 @@ a { text-decoration: none; }
   outline-offset: 3px;
 }
 
+@media (max-width: 991.98px) {
+  .eng { flex: 0 0 calc((100% - var(--eng-gap)) / 2); }
+}
+
 @media (max-width: 575.98px) {
   /* Not enough width to keep the arrows clear of the cards */
   .rail-nav { display: none; }
-  .eng-wrap { padding-inline: 0; }
   .eng { flex: 0 0 min(84%, 20rem); }
 }
 
@@ -1639,11 +1704,10 @@ a { text-decoration: none; }
 
 .builder-sep { color: var(--accent); }
 
+/* No padding here: the form and summary boxes have to start on the same line
+   as the heading, and any padding would push them in off that edge. */
 .builder-panel {
   margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
-  padding: clamp(0.9rem, 2vw, 1.6rem);
-  background-color: rgba(0, 0, 0, 0.55);
-  border-radius: 4px;
 }
 
 .builder-form,
@@ -2120,14 +2184,7 @@ a { text-decoration: none; }
 
 a.contact-item-value:hover { color: var(--accent); }
 
-/* The Google box reuses the studios styles, restyled for a light panel */
-.google-box--light {
-  margin-top: 1.5rem;
-  border-color: #ded7ce;
-}
-
-.google-box--light .google-title,
-.google-box--light .google-score { color: #0a0a0a; }
+.contact-details .google-box { margin-top: 1.5rem; }
 
 .contact-social {
   display: flex;
@@ -2482,12 +2539,47 @@ a.contact-item-value:hover { color: var(--accent); }
   --bs-btn-border-radius: 6px;
   --bs-btn-padding-x: 1.75rem;
   --bs-btn-padding-y: 0.65rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.25s ease, background-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* A light sweeps across the face on hover. It's a pseudo-element rather than a
+   background-position animation so it never disturbs the button's own colours. */
+.btn::after,
+.pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after,
+.pill:hover::after,
+.pill:focus-visible::after { transform: translateX(130%); }
+
 .btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+/* Each variant glows in its own colour so the lift reads on a dark page */
+.btn-lime:hover { box-shadow: 0 10px 26px rgba(200, 255, 0, 0.3); }
+.btn-accent:hover,
+.btn-pink:hover { box-shadow: 0 10px 26px rgba(232, 34, 118, 0.35); }
+.btn-light-flat:hover { box-shadow: 0 10px 26px rgba(255, 255, 255, 0.18); }
+.btn-outline-light:hover { box-shadow: 0 10px 26px rgba(255, 255, 255, 0.12); }
 
 .btn-accent {
   --bs-btn-color: #fff;
@@ -2562,11 +2654,19 @@ a.contact-item-value:hover { color: var(--accent); }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
+/* display:grid on the arrows would otherwise beat the [hidden] attribute */
+.rail-nav[hidden],
+.suites-nav[hidden] { display: none; }
+
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
+/* Near-black with only a whisper of warmth — the live footer reads almost flat.
+   The pink there is brighter than the page accent, so it's scoped here. */
 .site-footer {
-  background-color: var(--bg);
+  --pink: #ff2e8e;
+  background-color: #0d0809;
+  background-image: radial-gradient(120% 85% at 50% 20%, rgba(105, 18, 50, 0.18), transparent 68%);
   padding-block: clamp(2rem, 4vw, 3.5rem) 1rem;
 }
 
@@ -2595,6 +2695,7 @@ a.contact-item-value:hover { color: var(--accent); }
   width: 0.33em;
   height: 0.33em;
   margin-right: 0.28em;
+  background-color: var(--pink);
 }
 
 .footer-tagline {
@@ -2603,36 +2704,44 @@ a.contact-item-value:hover { color: var(--accent); }
   font-size: clamp(0.8rem, 1.5vw, 1.35rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--lime);
+  /* Live site runs this in pink, not the mock's lime */
+  color: var(--pink);
   margin: 0;
 }
 
+/* The live site's footer CTA is a full pill in the brighter pink */
 .footer-cta {
-  --bs-btn-padding-x: clamp(1.5rem, 3vw, 2.5rem);
-  --bs-btn-padding-y: 0.75rem;
-  --bs-btn-font-size: clamp(0.8rem, 1.2vw, 1.05rem);
-  --bs-btn-border-radius: 8px;
+  --bs-btn-bg: var(--pink);
+  --bs-btn-border-color: var(--pink);
+  --bs-btn-hover-bg: #ff5aa5;
+  --bs-btn-hover-border-color: #ff5aa5;
+  --bs-btn-padding-x: clamp(1.75rem, 3.5vw, 3rem);
+  --bs-btn-padding-y: 0.9rem;
+  --bs-btn-font-size: clamp(0.85rem, 1.25vw, 1.1rem);
+  --bs-btn-border-radius: 999px;
 }
 
-/* Link grid */
+/* Link grid — outline only. The live panel has no fill; it's the border alone
+   that separates it from the background. */
 .footer-panel {
-  padding: clamp(1.25rem, 2.5vw, 2.25rem);
-  background-color: var(--bg-alt);
-  border-radius: 14px;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: clamp(16px, 1.8vw, 26px);
 }
 
 .footer-title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(0.68rem, 0.85vw, 0.8rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(0.8rem, 1.05vw, 1rem);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 /* The first word of each heading picks up the brand pink */
-.footer-title span { color: var(--accent); }
+.footer-title span { color: var(--pink); }
 
 .footer-list {
   list-style: none;
@@ -2640,43 +2749,46 @@ a.contact-item-value:hover { color: var(--accent); }
   margin: 0;
 }
 
-.footer-list li + li { margin-top: 0.55rem; }
+.footer-list li + li { margin-top: 0.75rem; }
 
 .footer-list a {
-  font-size: clamp(0.65rem, 0.78vw, 0.75rem);
+  font-size: clamp(0.78rem, 0.95vw, 0.92rem);
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  transition: color 0.2s ease;
+  color: var(--ink);
+  transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-.footer-list a:hover { color: var(--accent-bright); }
+.footer-list a:hover {
+  color: var(--pink);
+  padding-left: 0.25rem;
+}
 
 .footer-contact { margin: 0; }
 
 .footer-contact-head {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(0.68rem, 0.85vw, 0.8rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(0.8rem, 1.05vw, 1rem);
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--ink);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
 }
 
-.footer-contact-head .bi { color: var(--accent); }
+.footer-contact-head .bi { color: var(--pink); }
 
-a.footer-contact-head:hover { color: var(--accent-bright); }
+a.footer-contact-head:hover { color: var(--pink); }
 
 .footer-contact a:not(.footer-contact-head) {
-  font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+  font-size: clamp(0.85rem, 1.05vw, 1rem);
   font-weight: 600;
-  color: var(--accent);
-  padding-left: 1.4rem;
+  color: var(--pink);
+  padding-left: 1.55rem;
 }
 
 .footer-contact a:not(.footer-contact-head):hover { color: var(--accent-bright); }
@@ -2698,7 +2810,7 @@ a.footer-contact-head:hover { color: var(--accent-bright); }
 }
 
 .footer-brand {
-  color: var(--accent);
+  color: var(--pink);
   font-size: 1.35rem;
 }
 
@@ -2760,7 +2872,7 @@ a.footer-contact-head:hover { color: var(--accent-bright); }
   margin: 0;
 }
 
-.footer-privacy:hover { color: var(--accent-bright); }
+.footer-privacy:hover { color: var(--pink); }
 
 .footer-social {
   display: flex;
@@ -2773,7 +2885,7 @@ a.footer-contact-head:hover { color: var(--accent-bright); }
   transition: color 0.2s ease;
 }
 
-.footer-social a:hover { color: var(--accent-bright); }
+.footer-social a:hover { color: var(--pink); }
 
 /* Floating actions */
 .chat-bubble,
@@ -2802,10 +2914,9 @@ a.footer-contact-head:hover { color: var(--accent-bright); }
 .to-top {
   right: 1.25rem;
   bottom: 1.25rem;
-  background-color: rgba(255, 255, 255, 0.12);
-  color: var(--ink);
-  border: 1px solid var(--line-strong);
-  backdrop-filter: blur(8px);
+  background-color: #f2f2f4;
+  color: #0a0a0a;
+  border: 0;
 }
 
 .chat-bubble:hover,

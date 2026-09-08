@@ -79,35 +79,76 @@
   const activeArtist = document.getElementById('activeArtist');
 
   if (artistsRow && activeArtist) {
-    const artists = artistsRow.querySelectorAll('.artist');
-    // Whatever is marked active in the markup is what we fall back to
-    const fallback = artistsRow.querySelector('.artist.is-active') || artists[0];
+    const artists = Array.from(artistsRow.querySelectorAll('.artist'));
+    let hovered = null;
+    let current = null;
 
     const setActive = (target) => {
-      artists.forEach((a) => a.classList.toggle('is-active', a === target));
+      if (!target || target === current) return;
+      if (current) current.classList.remove('is-active');
+      target.classList.add('is-active');
       activeArtist.textContent = target.dataset.artist;
+      current = target;
+    };
+
+    // Whichever portrait is closest to the middle of the screen is the one
+    // the card names — that's what makes the label track the moving strip.
+    const centred = () => {
+      const middle = window.innerWidth / 2;
+      let best = null;
+      let bestGap = Infinity;
+
+      for (const artist of artists) {
+        const box = artist.getBoundingClientRect();
+        if (box.right < 0 || box.left > window.innerWidth) continue;
+        const gap = Math.abs(box.left + box.width / 2 - middle);
+        if (gap < bestGap) {
+          bestGap = gap;
+          best = artist;
+        }
+      }
+      return best;
     };
 
     artists.forEach((artist) => {
-      const activate = () => {
-        artistsRow.classList.add('has-active');
+      artist.addEventListener('mouseenter', () => {
+        hovered = artist;
         setActive(artist);
-      };
-      artist.addEventListener('mouseenter', activate);
-      artist.addEventListener('focus', activate);
-      artist.addEventListener('click', activate);
+      });
     });
 
-    const reset = () => {
-      artistsRow.classList.remove('has-active');
-      setActive(fallback);
+    artistsRow.addEventListener('mouseleave', () => {
+      hovered = null;
+    });
+
+    // The strip animates in CSS, so the label has to sample where it is.
+    // Sampling a few times a second is plenty for a name, and the loop only
+    // runs while the section is actually on screen.
+    let running = false;
+    let last = 0;
+
+    const tick = (now) => {
+      if (!running) return;
+      if (now - last > 120) {
+        last = now;
+        setActive(hovered || centred());
+      }
+      requestAnimationFrame(tick);
     };
 
-    artistsRow.addEventListener('mouseleave', reset);
-    artistsRow.addEventListener('focusout', (event) => {
-      // Only reset when focus leaves the strip entirely
-      if (!artistsRow.contains(event.relatedTarget)) reset();
-    });
+    new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !running) {
+            running = true;
+            requestAnimationFrame(tick);
+          } else if (!entry.isIntersecting) {
+            running = false;
+          }
+        });
+      },
+      { threshold: 0 }
+    ).observe(artistsRow);
   }
 
   /* ------------------------------------------------------------------
@@ -134,11 +175,15 @@
 
     const syncEnds = () => {
       const maxScroll = rail.scrollWidth - rail.clientWidth;
+      // 2px of slack — sub-pixel layout keeps scrollLeft just shy of the end
+      const scrollable = maxScroll > 2;
       buttons.forEach((button) => {
         const forward = Number(button.dataset.dir) > 0;
-        // 2px of slack — sub-pixel layout keeps scrollLeft just shy of the end
         const atEnd = forward ? rail.scrollLeft >= maxScroll - 2 : rail.scrollLeft <= 2;
-        button.disabled = maxScroll <= 2 || atEnd;
+        // Nothing to scroll (every card already fits) — drop the arrows
+        // rather than leaving two dead controls on the page
+        button.hidden = !scrollable;
+        button.disabled = !scrollable || atEnd;
         button.style.opacity = button.disabled ? '0.35' : '';
       });
     };
@@ -237,15 +282,64 @@
   }
 
   /* ------------------------------------------------------------------
-     Close the slide-in menu after tapping a link
+     Slide-in menu. Bootstrap's offcanvas CSS ships with the stylesheet, so
+     all this needs to do is toggle the classes it reacts to — which is why
+     the whole Bootstrap JS bundle isn't loaded.
      ------------------------------------------------------------------ */
   const menu = document.getElementById('siteMenu');
 
   if (menu) {
+    const opener = document.querySelector('[data-bs-toggle="offcanvas"]');
+    let backdrop = null;
+    let lastFocused = null;
+
+    const isOpen = () => menu.classList.contains('show');
+
+    const openMenu = () => {
+      lastFocused = document.activeElement;
+      menu.classList.add('show');
+      menu.removeAttribute('aria-hidden');
+      if (opener) opener.setAttribute('aria-expanded', 'true');
+
+      backdrop = document.createElement('div');
+      backdrop.className = 'offcanvas-backdrop fade show';
+      backdrop.addEventListener('click', closeMenu);
+      document.body.appendChild(backdrop);
+      document.body.style.overflow = 'hidden';
+
+      const first = menu.querySelector('a, button');
+      if (first) first.focus();
+    };
+
+    function closeMenu() {
+      menu.classList.remove('show');
+      menu.setAttribute('aria-hidden', 'true');
+      if (opener) opener.setAttribute('aria-expanded', 'false');
+
+      if (backdrop) {
+        backdrop.remove();
+        backdrop = null;
+      }
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    if (opener) {
+      opener.setAttribute('aria-expanded', 'false');
+      opener.addEventListener('click', () => (isOpen() ? closeMenu() : openMenu()));
+    }
+
+    menu.querySelectorAll('[data-bs-dismiss="offcanvas"]').forEach((button) => {
+      button.addEventListener('click', closeMenu);
+    });
+
+    // Tapping a link jumps down the page, so the panel has to get out of the way
     menu.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', () => {
-        bootstrap.Offcanvas.getOrCreateInstance(menu).hide();
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) closeMenu();
     });
   }
 

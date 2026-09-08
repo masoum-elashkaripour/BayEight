@@ -6,17 +6,22 @@
   <title>Bay Eight Studios — Miami's Premier Recording Studio</title>
   <meta name="description" content="25 years of award-winning recordings. Miami's premier recording studio — built for precision, privacy, and premium sound." />
 
-  <!-- Fonts -->
+  <!-- Warm up the two CDNs the stylesheets come from -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
 
-  <!-- Bootstrap 5.3 -->
+  <!-- Bootstrap 5.3 (CSS only — the offcanvas is driven by js/main.js) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
 
-  <!-- Project styles -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Project styles — bump ?v= when the browser keeps serving a stale copy -->
+  <link rel="stylesheet" href="css/style.css?v=18" />
+
+  <!-- The hero still is the largest paint; start it before the CSS resolves -->
+  <link rel="preload" as="image" href="assets/img/hero-poster.jpg" fetchpriority="high" />
 </head>
 <body>
 
@@ -78,6 +83,9 @@
     <section id="hero" class="hero">
 
       <div class="hero-media">
+        <!-- Still sits underneath and shows until (or unless) the video plays -->
+        <img class="hero-still" src="assets/img/hero-poster.jpg" alt=""
+             fetchpriority="high" decoding="async" />
         <video class="hero-video" autoplay muted loop playsinline
                poster="assets/img/hero-poster.jpg">
           <source src="assets/video/hero.mp4" type="video/mp4" />
@@ -91,7 +99,9 @@
 
         <p class="hero-subtitle">
           <span>Miami's Premier Recording Studio</span>
-          <span class="hero-script">Miami</span>
+          <!-- The real script mark, lifted out of the Bay Eight lockup -->
+          <img class="hero-script" src="assets/img/miami-script.png" alt="Miami"
+               width="396" height="144" decoding="async" />
         </p>
 
         <p class="hero-kicker">25 Years of Award-Winning Recordings</p>
@@ -114,23 +124,32 @@
         <div class="marquee" aria-label="Brands that trust Bay Eight Studios">
           <div class="marquee-track">
             <!-- The two groups are identical, which is what makes the -50%
-                 loop seamless. Swap each span for <img class="logo-item">
-                 in BOTH groups when the real logo files arrive. -->
+                 loop seamless. Add or remove a logo in BOTH groups. -->
             <div class="marquee-group">
-              <span class="logo-item">Def Jam</span>
-              <span class="logo-item">Aveeno</span>
-              <span class="logo-item">Nike</span>
-              <span class="logo-item">Toronto</span>
-              <span class="logo-item">OVO Sound</span>
-              <span class="logo-item">Puma</span>
+              <img class="logo-item" src="assets/img/logos/alamo-records.png" alt="Alamo Records" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/warner-music-group.png" alt="Warner Music Group" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/sony-music-publishing.png" alt="Sony Music Publishing" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/universal-music-group.png" alt="Universal Music Group" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/def-jam-recordings.png" alt="Def Jam Recordings" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/rca.png" alt="RCA" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/roc-nation.png" alt="Roc Nation" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/sony-music.png" alt="Sony Music" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/interscope-records.png" alt="Interscope Records" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/warner-chappell-music.png" alt="Warner Chappell Music" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/epic.png" alt="Epic" width="284" height="149" decoding="async" />
             </div>
             <div class="marquee-group" aria-hidden="true">
-              <span class="logo-item">Def Jam</span>
-              <span class="logo-item">Aveeno</span>
-              <span class="logo-item">Nike</span>
-              <span class="logo-item">Toronto</span>
-              <span class="logo-item">OVO Sound</span>
-              <span class="logo-item">Puma</span>
+              <img class="logo-item" src="assets/img/logos/alamo-records.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/warner-music-group.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/sony-music-publishing.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/universal-music-group.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/def-jam-recordings.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/rca.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/roc-nation.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/sony-music.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/interscope-records.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/warner-chappell-music.png" alt="" width="284" height="149" decoding="async" />
+              <img class="logo-item" src="assets/img/logos/epic.png" alt="" width="284" height="149" decoding="async" />
             </div>
           </div>
         </div>
@@ -144,45 +163,234 @@
          shown in the centre card. Photos are from bayeight.com.
          ========================================================== -->
     <section id="clients" class="artists">
+      <!-- Container keeps the strip off the viewport edges and on the same
+           left/right lines as every other section -->
+      <div class="container">
       <div class="artists-row" id="artistsRow">
 
-        <div class="artists-strip no-scrollbar">
-          <button type="button" class="artist is-active" data-artist="Nas">
-            <span class="artist-photo">
-              <img src="assets/img/artists/nas.jpg" alt="Nas" decoding="async" />
-            </span>
-            <span class="artist-name">Nas</span>
-          </button>
-          <button type="button" class="artist" data-artist="Ed Sheeran">
-            <span class="artist-photo">
-              <img src="assets/img/artists/ed-sheeran.jpg" alt="Ed Sheeran" decoding="async" />
-            </span>
-            <span class="artist-name">Ed Sheeran</span>
-          </button>
-          <button type="button" class="artist" data-artist="J Balvin">
-            <span class="artist-photo">
-              <img src="assets/img/artists/j-balvin.jpg" alt="J Balvin" decoding="async" />
-            </span>
-            <span class="artist-name">J Balvin</span>
-          </button>
-          <button type="button" class="artist" data-artist="Tainy">
-            <span class="artist-photo">
-              <img src="assets/img/artists/tainy.jpg" alt="Tainy" decoding="async" />
-            </span>
-            <span class="artist-name">Tainy</span>
-          </button>
-          <button type="button" class="artist" data-artist="Diplo">
-            <span class="artist-photo">
-              <img src="assets/img/artists/diplo.jpg" alt="Diplo" decoding="async" />
-            </span>
-            <span class="artist-name">Diplo</span>
-          </button>
-          <button type="button" class="artist" data-artist="Swae Lee">
-            <span class="artist-photo">
-              <img src="assets/img/artists/swae-lee.jpg" alt="Swae Lee" decoding="async" />
-            </span>
-            <span class="artist-name">Swae Lee</span>
-          </button>
+        <div class="artists-marquee">
+          <div class="artists-track">
+          <div class="artists-group">
+            <div class="artist" data-artist="Nas">
+              <span class="artist-photo">
+                <img src="assets/img/artists/nas.jpg" alt="Nas" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Nas</span>
+            </div>
+            <div class="artist" data-artist="Ed Sheeran">
+              <span class="artist-photo">
+                <img src="assets/img/artists/ed-sheeran.jpg" alt="Ed Sheeran" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Ed Sheeran</span>
+            </div>
+            <div class="artist" data-artist="J Balvin">
+              <span class="artist-photo">
+                <img src="assets/img/artists/j-balvin.jpg" alt="J Balvin" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">J Balvin</span>
+            </div>
+            <div class="artist" data-artist="Tainy">
+              <span class="artist-photo">
+                <img src="assets/img/artists/tainy.jpg" alt="Tainy" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Tainy</span>
+            </div>
+            <div class="artist" data-artist="Diplo">
+              <span class="artist-photo">
+                <img src="assets/img/artists/diplo.jpg" alt="Diplo" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Diplo</span>
+            </div>
+            <div class="artist" data-artist="Swae Lee">
+              <span class="artist-photo">
+                <img src="assets/img/artists/swae-lee.jpg" alt="Swae Lee" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Swae Lee</span>
+            </div>
+            <div class="artist" data-artist="Chris Brown">
+              <span class="artist-photo">
+                <img src="assets/img/artists/chris-brown.jpg" alt="Chris Brown" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Chris Brown</span>
+            </div>
+            <div class="artist" data-artist="Lil Wayne">
+              <span class="artist-photo">
+                <img src="assets/img/artists/lil-wayne.jpg" alt="Lil Wayne" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Lil Wayne</span>
+            </div>
+            <div class="artist" data-artist="Rick Ross">
+              <span class="artist-photo">
+                <img src="assets/img/artists/rick-ross.jpg" alt="Rick Ross" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Rick Ross</span>
+            </div>
+            <div class="artist" data-artist="Offset">
+              <span class="artist-photo">
+                <img src="assets/img/artists/offset.jpg" alt="Offset" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Offset</span>
+            </div>
+            <div class="artist" data-artist="Kodak Black">
+              <span class="artist-photo">
+                <img src="assets/img/artists/kodak-black.jpg" alt="Kodak Black" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Kodak Black</span>
+            </div>
+            <div class="artist" data-artist="Bebe Rexha">
+              <span class="artist-photo">
+                <img src="assets/img/artists/beba-rexha.jpg" alt="Bebe Rexha" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Bebe Rexha</span>
+            </div>
+            <div class="artist" data-artist="Jessie Reyez">
+              <span class="artist-photo">
+                <img src="assets/img/artists/jessie-reyez.jpg" alt="Jessie Reyez" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Jessie Reyez</span>
+            </div>
+            <div class="artist" data-artist="Jhay Cortez">
+              <span class="artist-photo">
+                <img src="assets/img/artists/jhay-cortez.jpg" alt="Jhay Cortez" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Jhay Cortez</span>
+            </div>
+            <div class="artist" data-artist="French Montana">
+              <span class="artist-photo">
+                <img src="assets/img/artists/french-montana.jpg" alt="French Montana" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">French Montana</span>
+            </div>
+            <div class="artist" data-artist="Lucky Daye">
+              <span class="artist-photo">
+                <img src="assets/img/artists/lucky-daye.jpg" alt="Lucky Daye" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Lucky Daye</span>
+            </div>
+            <div class="artist" data-artist="Willow Smith">
+              <span class="artist-photo">
+                <img src="assets/img/artists/willow-smith.jpg" alt="Willow Smith" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Willow Smith</span>
+            </div>
+            <div class="artist" data-artist="Solange">
+              <span class="artist-photo">
+                <img src="assets/img/artists/solange.jpg" alt="Solange" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Solange</span>
+            </div>
+          </div>
+          <div class="artists-group" aria-hidden="true">
+            <div class="artist" data-artist="Nas">
+              <span class="artist-photo">
+                <img src="assets/img/artists/nas.jpg" alt="Nas" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Nas</span>
+            </div>
+            <div class="artist" data-artist="Ed Sheeran">
+              <span class="artist-photo">
+                <img src="assets/img/artists/ed-sheeran.jpg" alt="Ed Sheeran" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Ed Sheeran</span>
+            </div>
+            <div class="artist" data-artist="J Balvin">
+              <span class="artist-photo">
+                <img src="assets/img/artists/j-balvin.jpg" alt="J Balvin" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">J Balvin</span>
+            </div>
+            <div class="artist" data-artist="Tainy">
+              <span class="artist-photo">
+                <img src="assets/img/artists/tainy.jpg" alt="Tainy" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Tainy</span>
+            </div>
+            <div class="artist" data-artist="Diplo">
+              <span class="artist-photo">
+                <img src="assets/img/artists/diplo.jpg" alt="Diplo" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Diplo</span>
+            </div>
+            <div class="artist" data-artist="Swae Lee">
+              <span class="artist-photo">
+                <img src="assets/img/artists/swae-lee.jpg" alt="Swae Lee" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Swae Lee</span>
+            </div>
+            <div class="artist" data-artist="Chris Brown">
+              <span class="artist-photo">
+                <img src="assets/img/artists/chris-brown.jpg" alt="Chris Brown" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Chris Brown</span>
+            </div>
+            <div class="artist" data-artist="Lil Wayne">
+              <span class="artist-photo">
+                <img src="assets/img/artists/lil-wayne.jpg" alt="Lil Wayne" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Lil Wayne</span>
+            </div>
+            <div class="artist" data-artist="Rick Ross">
+              <span class="artist-photo">
+                <img src="assets/img/artists/rick-ross.jpg" alt="Rick Ross" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Rick Ross</span>
+            </div>
+            <div class="artist" data-artist="Offset">
+              <span class="artist-photo">
+                <img src="assets/img/artists/offset.jpg" alt="Offset" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Offset</span>
+            </div>
+            <div class="artist" data-artist="Kodak Black">
+              <span class="artist-photo">
+                <img src="assets/img/artists/kodak-black.jpg" alt="Kodak Black" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Kodak Black</span>
+            </div>
+            <div class="artist" data-artist="Bebe Rexha">
+              <span class="artist-photo">
+                <img src="assets/img/artists/beba-rexha.jpg" alt="Bebe Rexha" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Bebe Rexha</span>
+            </div>
+            <div class="artist" data-artist="Jessie Reyez">
+              <span class="artist-photo">
+                <img src="assets/img/artists/jessie-reyez.jpg" alt="Jessie Reyez" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Jessie Reyez</span>
+            </div>
+            <div class="artist" data-artist="Jhay Cortez">
+              <span class="artist-photo">
+                <img src="assets/img/artists/jhay-cortez.jpg" alt="Jhay Cortez" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Jhay Cortez</span>
+            </div>
+            <div class="artist" data-artist="French Montana">
+              <span class="artist-photo">
+                <img src="assets/img/artists/french-montana.jpg" alt="French Montana" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">French Montana</span>
+            </div>
+            <div class="artist" data-artist="Lucky Daye">
+              <span class="artist-photo">
+                <img src="assets/img/artists/lucky-daye.jpg" alt="Lucky Daye" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Lucky Daye</span>
+            </div>
+            <div class="artist" data-artist="Willow Smith">
+              <span class="artist-photo">
+                <img src="assets/img/artists/willow-smith.jpg" alt="Willow Smith" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Willow Smith</span>
+            </div>
+            <div class="artist" data-artist="Solange">
+              <span class="artist-photo">
+                <img src="assets/img/artists/solange.jpg" alt="Solange" decoding="async" loading="lazy" />
+              </span>
+              <span class="artist-name">Solange</span>
+            </div>
+          </div>
+          </div>
         </div>
 
         <div class="artists-card">
@@ -194,6 +402,7 @@
         </div>
 
       </div>
+      </div>
     </section>
 
     <!-- ==========================================================
@@ -202,7 +411,10 @@
          the YouTube iframe is only injected once the play button is pressed.
          ========================================================== -->
     <section id="about" class="welcome">
-      <div class="welcome-card">
+      <!-- The container fixes where the copy starts; the card itself then
+           bleeds out past it on both sides. -->
+      <div class="container">
+        <div class="welcome-card">
         <div class="row align-items-center g-4 g-lg-5">
 
           <div class="col-lg-6">
@@ -232,6 +444,7 @@
             </div>
           </div>
 
+        </div>
         </div>
       </div>
     </section>
@@ -318,92 +531,98 @@
         </div>
       </div>
 
-      <!-- Perks marquee — repeated above and below the suite carousel -->
-      <div class="perks" aria-label="What every session includes">
-        <div class="perks-track">
-          <div class="perks-group">
-            <span>Engineer Included</span><span class="perks-sep">|</span>
-            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
-            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
-            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
-          </div>
-          <div class="perks-group" aria-hidden="true">
-            <span>Engineer Included</span><span class="perks-sep">|</span>
-            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
-            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
-            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="suites">
+      <!-- The container fixes the left edge; the block then bleeds off the
+           right edge of the viewport. The perks marquees live in the same
+           column as the frame, so all three share one left edge. -->
+      <div class="container">
+        <div class="suites">
         <p class="suites-location">
           <span class="suites-location-text">Bay Eight NoMi</span>
           <span class="suites-location-dot" aria-hidden="true"></span>
         </p>
 
-        <div class="suites-frame">
-          <div class="suites-rail js-rail no-scrollbar" id="suitesRail">
-
-            <article class="suite">
-              <img src="assets/img/studios/ssl-suite.jpg"
-                   alt="The SSL Suite control room at Bay Eight Studios"
-                   decoding="async" loading="lazy" />
-              <div class="suite-body">
-                <h3 class="suite-name">SSL Suite</h3>
-                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami Beach, FL</p>
-                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+          <div class="suites-stack">
+          <div class="perks" aria-label="What every session includes">
+            <div class="perks-track">
+              <div class="perks-group">
+                <span>Engineer Included</span><span class="perks-sep">|</span>
+                <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+                <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+                <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
               </div>
-            </article>
-
-            <article class="suite">
-              <img src="assets/img/studios/douglas-suite.jpg"
-                   alt="The Douglas Suite lounge at Bay Eight Studios"
-                   decoding="async" loading="lazy" />
-              <div class="suite-body">
-                <h3 class="suite-name">Douglas Suite</h3>
-                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
-                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+              <div class="perks-group" aria-hidden="true">
+                <span>Engineer Included</span><span class="perks-sep">|</span>
+                <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+                <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+                <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
               </div>
-            </article>
-
-            <article class="suite">
-              <img src="assets/img/studios/whisper-suite.jpg"
-                   alt="The Whisper Suite control room at Bay Eight Studios"
-                   decoding="async" loading="lazy" />
-              <div class="suite-body">
-                <h3 class="suite-name">Whisper Suite</h3>
-                <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
-                <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
-              </div>
-            </article>
-
+            </div>
           </div>
 
-          <button type="button" class="suites-nav suites-prev" data-rail="suitesRail" data-dir="-1"
-                  aria-label="Previous suite">
-            <i class="bi bi-arrow-left"></i>
-          </button>
-          <button type="button" class="suites-nav suites-next" data-rail="suitesRail" data-dir="1"
-                  aria-label="Next suite">
-            <i class="bi bi-arrow-right"></i>
-          </button>
-        </div>
-      </div>
+            <div class="suites-frame">
+              <div class="suites-rail js-rail no-scrollbar" id="suitesRail">
 
-      <div class="perks" aria-hidden="true">
-        <div class="perks-track perks-track-reverse">
-          <div class="perks-group">
-            <span>Engineer Included</span><span class="perks-sep">|</span>
-            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
-            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
-            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+                <article class="suite">
+                  <img src="assets/img/studios/ssl-suite.jpg"
+                       alt="The SSL Suite control room at Bay Eight Studios"
+                       decoding="async" loading="lazy" />
+                  <div class="suite-body">
+                    <h3 class="suite-name">SSL Suite</h3>
+                    <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami Beach, FL</p>
+                    <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+                  </div>
+                </article>
+
+                <article class="suite">
+                  <img src="assets/img/studios/douglas-suite.jpg"
+                       alt="The Douglas Suite lounge at Bay Eight Studios"
+                       decoding="async" loading="lazy" />
+                  <div class="suite-body">
+                    <h3 class="suite-name">Douglas Suite</h3>
+                    <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
+                    <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+                  </div>
+                </article>
+
+                <article class="suite">
+                  <img src="assets/img/studios/whisper-suite.jpg"
+                       alt="The Whisper Suite control room at Bay Eight Studios"
+                       decoding="async" loading="lazy" />
+                  <div class="suite-body">
+                    <h3 class="suite-name">Whisper Suite</h3>
+                    <p class="suite-place"><i class="bi bi-geo-alt-fill"></i>North Miami, FL</p>
+                    <a class="btn btn-lime btn-sm" href="#contact">View This Suite</a>
+                  </div>
+                </article>
+
+              </div>
+
+              <button type="button" class="suites-nav suites-prev" data-rail="suitesRail" data-dir="-1"
+                      aria-label="Previous suite">
+                <i class="bi bi-arrow-left"></i>
+              </button>
+              <button type="button" class="suites-nav suites-next" data-rail="suitesRail" data-dir="1"
+                      aria-label="Next suite">
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+
+          <div class="perks" aria-hidden="true">
+            <div class="perks-track perks-track-reverse">
+              <div class="perks-group">
+                <span>Engineer Included</span><span class="perks-sep">|</span>
+                <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+                <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+                <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+              </div>
+              <div class="perks-group">
+                <span>Engineer Included</span><span class="perks-sep">|</span>
+                <span>Free Monitored Parking</span><span class="perks-sep">|</span>
+                <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
+                <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
+              </div>
+            </div>
           </div>
-          <div class="perks-group">
-            <span>Engineer Included</span><span class="perks-sep">|</span>
-            <span>Free Monitored Parking</span><span class="perks-sep">|</span>
-            <span>Complimentary Snacks &amp; Refreshments</span><span class="perks-sep">|</span>
-            <span>Absolute Privacy in Studio</span><span class="perks-sep">|</span>
           </div>
         </div>
       </div>
@@ -1141,7 +1360,7 @@
                   </li>
                 </ul>
 
-                <div class="google-box google-box--light">
+                <div class="google-box">
                   <img class="google-mark" src="assets/img/google-top-rated.svg" alt="Google"
                        decoding="async" loading="lazy" />
                   <div class="google-copy">
@@ -1382,7 +1601,7 @@
         </p>
         <p class="footer-tagline">Loud and Clear</p>
       </div>
-      <a class="btn btn-lime footer-cta" href="#contact">Contact Us</a>
+      <a class="btn btn-pink footer-cta" href="#contact">Contact Us</a>
     </div>
 
     <!-- Link grid -->
@@ -1472,7 +1691,7 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="google-box google-box--light">
+          <div class="google-box">
             <img class="google-mark" src="assets/img/google-top-rated.svg" alt="Google"
                  decoding="async" loading="lazy" />
             <div class="google-copy">
@@ -1516,9 +1735,8 @@
     <i class="bi bi-chevron-up"></i>
   </button>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Project scripts -->
-  <script src="js/main.js"></script>
+  <!-- No Bootstrap JS: the slide-in menu was the only component in use, and
+       main.js drives it against Bootstrap's own offcanvas CSS classes. -->
+  <script src="js/main.js?v=18" defer></script>
 </body>
 </html>

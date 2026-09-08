@@ -78,7 +78,7 @@ Drop these in and they wire up with no code change:
 |---|---|
 | `assets/video/hero.mp4` | hero background video |
 | `assets/img/hero-poster.jpg` | poster frame shown before the video plays |
-| `assets/img/logos/*.svg` | Trusted By marquee (currently text wordmarks) |
+| `assets/img/logos/*.png` | Trusted By marquee — label logos in as placeholders |
 
 Still to source from Canva:
 
