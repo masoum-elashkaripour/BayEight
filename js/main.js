@@ -48,7 +48,7 @@
   /* ------------------------------------------------------------------
      Scroll reveal — add class="reveal" to anything that should fade up
      ------------------------------------------------------------------ */
-  const revealItems = document.querySelectorAll('.reveal');
+  const revealItems = document.querySelectorAll('.reveal, .reveal-group');
 
   if (revealItems.length) {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -60,11 +60,19 @@
         (entries, observer) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-            entry.target.classList.add('is-visible');
             observer.unobserve(entry.target);
+            // Give the browser a frame to paint the hidden state first.
+            // Anything already on screen when the observer starts would
+            // otherwise flip to visible in the same frame and never
+            // transition — which just reads as "it appeared at full opacity".
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => entry.target.classList.add('is-visible'));
+            });
           });
         },
-        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+        // A low threshold so tall blocks trigger as soon as their top edge
+        // clears, rather than waiting to be 15% on screen
+        { threshold: 0.05, rootMargin: '0px 0px -8% 0px' }
       );
 
       revealItems.forEach((el) => revealer.observe(el));
